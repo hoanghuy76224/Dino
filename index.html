@@ -769,7 +769,44 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
   .secret { padding: 80px 24px; margin: 0 16px; border-radius: 40px; }
   .week-grid { grid-template-columns: 1fr; gap: 40px; }
   .week-baby-illo { height: 360px; padding: 40px; border-radius: 30px; }
-  .checklist-grid { grid-template-columns: 1fr; gap: 24px;}
+  .checklist-grid { grid-template-columns: 1fr; gap: 16px;}
+  /* Accordion: gập card lại trên mobile cho đỡ dài */
+  .check-card { padding: 24px 24px; border-radius: 28px; }
+  .check-card h4 {
+    margin-bottom: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 24px;
+  }
+  .check-card h4::after {
+    content: '▾';
+    font-size: 20px;
+    color: var(--dino-peach-dark);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  .check-card.collapsed h4::after { transform: rotate(-90deg); }
+  .check-card .check-list,
+  .check-card .check-progress,
+  .check-card .check-count {
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.3s ease;
+    max-height: 2000px;
+    opacity: 1;
+  }
+  .check-card.collapsed .check-list,
+  .check-card.collapsed .check-progress,
+  .check-card.collapsed .check-count {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .check-card .check-list { margin-top: 16px; }
+  .check-list li { padding: 12px 0; font-size: 17px; }
   .letter-wrap { padding: 50px 30px; border-radius: 30px; }
   .letter-greeting { font-size: 32px; }
   .letter p { font-size: 18px; }
@@ -1210,6 +1247,36 @@ document.querySelectorAll('.check-list li[data-id]').forEach(li => {
     }
   });
 });
+
+/* --- ACCORDION CHECKLIST (chỉ mobile) --- */
+(function () {
+  const mq = window.matchMedia('(max-width: 768px)');
+  const cards = document.querySelectorAll('.check-card');
+
+  function applyMobile(on) {
+    cards.forEach((card, i) => {
+      if (on) {
+        // Mặc định mở card đầu (giai đoạn hiện tại), gập các card còn lại
+        card.classList.toggle('collapsed', i !== 0);
+      } else {
+        card.classList.remove('collapsed');
+      }
+    });
+  }
+
+  cards.forEach(card => {
+    const head = card.querySelector('h4');
+    if (head) {
+      head.addEventListener('click', () => {
+        if (!mq.matches) return; // desktop: không gập
+        card.classList.toggle('collapsed');
+      });
+    }
+  });
+
+  applyMobile(mq.matches);
+  mq.addEventListener('change', e => applyMobile(e.matches));
+})();
 </script>
 
 <script>
