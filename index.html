@@ -629,8 +629,8 @@ nav {
 
 .checklist-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 32px;
   margin-top: 20px;
 }
 .check-card {
@@ -1043,26 +1043,37 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
           <li data-id="n2"><span class="check-box"></span><span>Đặt tên Dino (tên ở nhà)</span></li>
           <li data-id="n3"><span class="check-box"></span><span>Đăng ký lớp tiền sản</span></li>
           <li data-id="n4"><span class="check-box"></span><span>Chốt bác sĩ theo dõi cố định</span></li>
-          <li data-id="n5"><span class="check-box"></span><span>Test đường đi giờ kẹt xe</span></li>
+          <li data-id="n5"><span class="check-box"></span><span>Test đường đi Q8 → Từ Dũ giờ kẹt xe</span></li>
           <li data-id="n6"><span class="check-box"></span><span>Lưu số khẩn cấp (115, Từ Dũ)</span></li>
+          <li data-id="n7"><span class="check-box"></span><span>Làm test tiểu đường thai kỳ (tuần 24-28)</span></li>
+          <li data-id="n8"><span class="check-box"></span><span>Tiêm vaccine uốn ván (VAT) cho mẹ</span></li>
+          <li data-id="n9"><span class="check-box"></span><span>Bổ sung sắt + canxi đều đặn</span></li>
+          <li data-id="n10"><span class="check-box"></span><span>Lập sổ khám thai theo tuần</span></li>
+          <li data-id="n11"><span class="check-box"></span><span>Tính ngày phép thai sản với Transcosmos</span></li>
         </ul>
         <div class="check-progress"><div class="check-progress-bar"></div></div>
-        <div class="check-count">0/6 hoàn thành</div>
+        <div class="check-count">0/11 hoàn thành</div>
       </div>
       
       <div class="check-card" data-card="soon">
         <div class="check-card-stage">Sắp tới — Tuần 28-35</div>
         <h4 class="font-title">Cuối Thai Kỳ</h4>
         <ul class="check-list">
-          <li data-id="s1"><span class="check-box"></span><span>Mua đồ sơ sinh cơ bản</span></li>
-          <li data-id="s2"><span class="check-box"></span><span>Chuẩn bị góc ngủ cho bé</span></li>
-          <li data-id="s3"><span class="check-box"></span><span>Kiểm tra Bảo hiểm thai sản</span></li>
-          <li data-id="s4"><span class="check-box"></span><span>Bàn giao công việc cty</span></li>
-          <li data-id="s5"><span class="check-box"></span><span>Học bế bé, thay tã, pha sữa</span></li>
-          <li data-id="s6"><span class="check-box"></span><span>Quỹ dự phòng sinh nở</span></li>
+          <li data-id="s1"><span class="check-box"></span><span>Mua quần áo sơ sinh (size NB + 3M)</span></li>
+          <li data-id="s2"><span class="check-box"></span><span>Tã / bỉm sơ sinh, khăn sữa, khăn xô</span></li>
+          <li data-id="s3"><span class="check-box"></span><span>Bình sữa, máy hút sữa, nước rửa bình</span></li>
+          <li data-id="s4"><span class="check-box"></span><span>Nôi / cũi + chăn, gối chống bẹt đầu</span></li>
+          <li data-id="s5"><span class="check-box"></span><span>Máy tiệt trùng + máy hâm sữa</span></li>
+          <li data-id="s6"><span class="check-box"></span><span>Kiểm tra & nộp hồ sơ BHXH thai sản</span></li>
+          <li data-id="s7"><span class="check-box"></span><span>Bàn giao công việc, chốt người trực ca</span></li>
+          <li data-id="s8"><span class="check-box"></span><span>Học bế bé, thay tã, pha sữa, vỗ ợ hơi</span></li>
+          <li data-id="s9"><span class="check-box"></span><span>Quỹ dự phòng sinh nở (tiền mặt + thẻ)</span></li>
+          <li data-id="s10"><span class="check-box"></span><span>Lên kế hoạch mẹ về Bình Thuận ở cữ</span></li>
+          <li data-id="s11"><span class="check-box"></span><span>Giặt - phơi - gấp sẵn đồ sơ sinh</span></li>
+          <li data-id="s12"><span class="check-box"></span><span>Siêu âm 4D + xét nghiệm tuần 30-32</span></li>
         </ul>
         <div class="check-progress"><div class="check-progress-bar"></div></div>
-        <div class="check-count">0/6 hoàn thành</div>
+        <div class="check-count">0/12 hoàn thành</div>
       </div>
       
       <div class="check-card" data-card="before">
@@ -1070,14 +1081,37 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
         <h4 class="font-title">Sẵn Sàng Đón Bé</h4>
         <ul class="check-list">
           <li data-id="b1"><span class="check-box"></span><span>Túi đi sinh để sẵn ở cửa</span></li>
-          <li data-id="b2"><span class="check-box"></span><span>Đếm thai máy hàng ngày</span></li>
-          <li data-id="b3"><span class="check-box"></span><span>Học dấu hiệu chuyển dạ</span></li>
-          <li data-id="b4"><span class="check-box"></span><span>Xin phép nghỉ tuần sinh</span></li>
-          <li data-id="b5"><span class="check-box"></span><span>Sẵn sàng giấy chứng sinh</span></li>
-          <li data-id="b6"><span class="check-box"></span><span>Hít thở thật sâu — sắp tới rồi!</span></li>
+          <li data-id="b2"><span class="check-box"></span><span>Đếm thai máy mỗi ngày (sáng - tối)</span></li>
+          <li data-id="b3"><span class="check-box"></span><span>Học nhận biết dấu hiệu chuyển dạ</span></li>
+          <li data-id="b4"><span class="check-box"></span><span>Xin phép nghỉ tuần sinh ở cty</span></li>
+          <li data-id="b5"><span class="check-box"></span><span>Photo sẵn CCCD, sổ khám, BHYT</span></li>
+          <li data-id="b6"><span class="check-box"></span><span>Sạc đầy điện thoại + pin dự phòng</span></li>
+          <li data-id="b7"><span class="check-box"></span><span>Đổ đầy xăng / book sẵn taxi dự phòng</span></li>
+          <li data-id="b8"><span class="check-box"></span><span>Khám thai mỗi tuần từ tuần 36</span></li>
+          <li data-id="b9"><span class="check-box"></span><span>Chốt người đưa đi viện khi trở dạ</span></li>
+          <li data-id="b10"><span class="check-box"></span><span>Hít thở thật sâu — sắp tới rồi!</span></li>
         </ul>
         <div class="check-progress"><div class="check-progress-bar"></div></div>
-        <div class="check-count">0/6 hoàn thành</div>
+        <div class="check-count">0/10 hoàn thành</div>
+      </div>
+
+      <div class="check-card" data-card="bag">
+        <div class="check-card-stage">Túi đi sinh — chuẩn bị từ tuần 35</div>
+        <h4 class="font-title">Túi Đi Sinh 🧳</h4>
+        <ul class="check-list">
+          <li data-id="g1"><span class="check-box"></span><span>Giấy tờ: CCCD, sổ khám thai, BHYT</span></li>
+          <li data-id="g2"><span class="check-box"></span><span>Đồ cho mẹ: áo cài nút, quần lót giấy</span></li>
+          <li data-id="g3"><span class="check-box"></span><span>Băng vệ sinh sau sinh, miếng lót</span></li>
+          <li data-id="g4"><span class="check-box"></span><span>Bỉm + áo + bao tay/chân cho bé</span></li>
+          <li data-id="g5"><span class="check-box"></span><span>Khăn xô, khăn sữa, mũ thóp cho bé</span></li>
+          <li data-id="g6"><span class="check-box"></span><span>Bình sữa + sữa công thức dự phòng</span></li>
+          <li data-id="g7"><span class="check-box"></span><span>Đồ vệ sinh: bàn chải, khăn mặt mẹ</span></li>
+          <li data-id="g8"><span class="check-box"></span><span>Tiền mặt + thẻ ngân hàng</span></li>
+          <li data-id="g9"><span class="check-box"></span><span>Sạc điện thoại + pin dự phòng</span></li>
+          <li data-id="g10"><span class="check-box"></span><span>Nước, đồ ăn nhẹ cho ba mẹ chờ sinh</span></li>
+        </ul>
+        <div class="check-progress"><div class="check-progress-bar"></div></div>
+        <div class="check-count">0/10 hoàn thành</div>
       </div>
     </div>
   </div>
