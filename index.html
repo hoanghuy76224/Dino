@@ -738,6 +738,74 @@ nav {
 
 /* --- CTA & FOOTER --- */
 .cta-section { padding: 120px 48px; text-align: center; position: relative; background: var(--bg-main); }
+/* --- Nút phụ + Modal "khi nào gọi bác sĩ" --- */
+.btn-sos {
+  display: none;
+  position: fixed;
+  bottom: 20px; right: 20px;
+  z-index: 900;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--dino-peach);
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(245, 147, 130, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+.btn-sos:active { transform: scale(0.92); }
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(60, 48, 40, 0.55);
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+.modal-box {
+  background: var(--bg-main);
+  max-width: 560px;
+  width: 100%;
+  margin: 40px auto;
+  border-radius: 32px;
+  padding: 36px 32px;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  text-align: left;
+}
+.modal-close {
+  position: absolute; top: 18px; right: 18px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--white);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text-soft);
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-box h3 { font-size: 26px; color: var(--text-main); margin-bottom: 6px; }
+.modal-box .modal-sub { font-size: 14px; color: var(--text-soft); margin-bottom: 20px; font-weight: 600; }
+.modal-block { border-radius: 18px; padding: 16px 18px; margin-bottom: 14px; }
+.modal-block h4 { font-size: 16px; margin-bottom: 8px; font-weight: 900; }
+.modal-block ul { list-style: none; padding: 0; margin: 0; }
+.modal-block li { font-size: 14.5px; font-weight: 600; line-height: 1.5; padding: 4px 0 4px 20px; position: relative; color: var(--text-main); }
+.modal-block li::before { content: '·'; position: absolute; left: 6px; font-weight: 900; }
+.mb-red { background: #FFF0F0; border: 2px solid #FFD0D0; }
+.mb-red h4 { color: #C0392B; }
+.mb-yellow { background: #FFF6DD; border: 2px solid #FFE3A0; }
+.mb-yellow h4 { color: #C99A1E; }
+.mb-gray { background: #F0EEEC; border: 2px solid #DDD4CC; }
+.mb-gray h4 { color: #8E7C71; }
+.modal-phones { margin-top: 18px; padding: 16px 18px; background: var(--white); border-radius: 18px; border: 2px dashed var(--dino-green); }
+.modal-phones h4 { font-size: 15px; color: var(--dino-green-dark); margin-bottom: 8px; }
+.modal-phones p { font-size: 14px; font-weight: 700; color: var(--text-main); margin: 5px 0; }
+.modal-tagline { margin-top: 18px; text-align: center; font-size: 15px; font-weight: 800; color: var(--dino-peach-dark); }
 .cta-title {
   font-size: clamp(36px, 4.5vw, 56px);
   color: var(--text-main);
@@ -770,6 +838,7 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
 @media (max-width: 900px) {
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
+  .btn-sos { display: flex; }
   .hero { padding: 120px 24px 60px; }
   .hero-visual { height: 400px; }
   .countdown { margin: 0 16px; padding: 40px 24px; border-radius: 30px; }
@@ -848,6 +917,7 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
     <a href="#dino">Dino</a>
     <a href="#thu">Thư của ba</a>
     <a href="#chuanbi">Chuẩn bị</a>
+    <a href="#" onclick="document.getElementById('sosModal').classList.add('open');return false;">🩺 Bác sĩ</a>
   </div>
 </nav>
 
@@ -1589,7 +1659,64 @@ updateAll();
 updateRealtime();
 setInterval(updateRealtime, 1000);
 setInterval(updateAll, 3600000);
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){ var m = document.getElementById('sosModal'); if(m) m.classList.remove('open'); }
+});
 </script>
+
+<button class="btn-sos" onclick="document.getElementById('sosModal').classList.add('open')" aria-label="Khi nào gọi bác sĩ">🩺</button>
+
+<div class="modal-overlay" id="sosModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('sosModal').classList.remove('open')">×</button>
+    <h3>🩺 Dùng AI hay gọi bác sĩ?</h3>
+    <p class="modal-sub">AI để tra cho đỡ lo, KHÔNG thay bác sĩ. Có dấu hiệu đỏ thì bỏ máy xuống, gọi người thật.</p>
+
+    <div class="modal-block mb-red">
+      <h4>🔴 Gọi bác sĩ / đi viện NGAY — không hỏi AI</h4>
+      <ul>
+        <li>Bé sốt (dưới 3 tháng tuổi mà sốt là đi khám ngay)</li>
+        <li>Bỏ bú, bú kém hẳn, lừ đừ, ngủ li bì khó đánh thức</li>
+        <li>Thở bất thường: thở nhanh, thở rít, rút lõm lồng ngực, ngừng thở</li>
+        <li>Tím tái môi / đầu ngón tay, da xám</li>
+        <li>Co giật, người cứng đờ hoặc mềm nhũn bất thường</li>
+        <li>Nôn ói liên tục, nôn dịch xanh/vàng, tiêu chảy nhiều lần</li>
+        <li>Khóc thét không dỗ được kéo dài</li>
+        <li>Bất kỳ chuyện gì về LIỀU THUỐC → hỏi bác sĩ/dược sĩ, KHÔNG hỏi AI</li>
+      </ul>
+    </div>
+
+    <div class="modal-block mb-yellow">
+      <h4>🟡 Hỏi AI được (vẫn nên xác nhận với bác sĩ khi đi khám)</h4>
+      <ul>
+        <li>"Cái này có bình thường không?" (đi ngoài thưa, vặn mình, nấc cụt...)</li>
+        <li>Giải thích thuật ngữ bác sĩ nói chưa hiểu</li>
+        <li>Gợi ý câu hỏi mang đi hỏi bác sĩ</li>
+        <li>Mẹo chăm sóc chung: tắm, vỗ ợ hơi, cách bế</li>
+      </ul>
+    </div>
+
+    <div class="modal-block mb-gray">
+      <h4>⚠️ Khi hỏi AI nhớ</h4>
+      <ul>
+        <li>AI trả lời mượt, tự tin KHÔNG có nghĩa là đúng. Càng trơn tru càng phải nghi.</li>
+        <li>AI bịa số liệu, bịa nguồn được. Đừng lấy liều thuốc / con số từ AI.</li>
+        <li>Thấy nghi → hỏi lại "có chắc không, có gì bỏ qua không".</li>
+      </ul>
+    </div>
+
+    <div class="modal-phones">
+      <h4>☎️ Số khẩn cấp</h4>
+      <p>Bác sĩ Nhi gần nhà: _______________</p>
+      <p>BV / phòng khám Nhi gần nhất: _______________</p>
+      <p>Ba (Huy): _______________</p>
+      <p>Cấp cứu: <strong>115</strong></p>
+    </div>
+
+    <p class="modal-tagline">AI để đỡ lo, người thật để cứu con. 🦖</p>
+  </div>
+</div>
 
 </body>
 </html>
