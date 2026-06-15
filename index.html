@@ -698,6 +698,22 @@ nav {
   font-weight: 900;
 }
 .check-list li.done { color: var(--text-soft); opacity: 0.6; text-decoration: line-through; text-decoration-color: rgba(92, 75, 65, 0.3); text-decoration-thickness: 2px;}
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 9px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+.tag-must { background: #E3F6EC; color: #3A9E72; border: 1.5px solid #82D1AD; }
+.tag-rec  { background: #FFF6DD; color: #C99A1E; border: 1.5px solid #FFD166; }
+.tag-opt  { background: #F0EEEC; color: #8E7C71; border: 1.5px solid #C9BDB4; }
+.check-list li.done .tag { opacity: 0.5; }
+.tag-cell { display: inline; }
 .check-progress {
   margin-top: 30px;
   height: 16px;
@@ -1070,7 +1086,17 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
       <div class="sync-dot" id="sync-dot"></div>
       <span id="sync-text">Đang kết nối...</span>
     </div>
-    
+
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 20px;font-size:13px;font-weight:800;color:var(--text-soft);">
+      <span>Mức ưu tiên:</span>
+      <span class="tag tag-must">🟢 Phải có</span>
+      <span class="tag tag-rec">🟡 Nên có</span>
+      <span class="tag tag-opt">⚪ Tùy chọn</span>
+    </div>
+    <div style="margin:0 0 28px;padding:14px 20px;background:#FFF0F0;border:2px solid #FFD0D0;border-radius:18px;font-size:14px;font-weight:700;color:#C0392B;line-height:1.5;">
+      ⚠️ KHÔNG mua: gối chống bẹp đầu, gối định hình, quây cũi (bumper), chăn dày. Vật mềm trong nôi tăng rủi ro ngạt. Bẹp đầu xử lý bằng xoay đầu + cho bé nằm sấp lúc thức (tummy time).
+    </div>
+
     <div class="checklist-grid">
       <div class="check-card" data-card="now">
         <div class="check-card-stage">Bây giờ — Tuần 22-27</div>
@@ -1096,18 +1122,18 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
         <div class="check-card-stage">Sắp tới — Tuần 28-35</div>
         <h4 class="font-title">Cuối Thai Kỳ</h4>
         <ul class="check-list">
-          <li data-id="s1"><span class="check-box"></span><span>Mua quần áo sơ sinh (size NB + 3M)</span></li>
-          <li data-id="s2"><span class="check-box"></span><span>Tã / bỉm sơ sinh, khăn sữa, khăn xô</span></li>
-          <li data-id="s3"><span class="check-box"></span><span>Bình sữa 1-2 cái dự phòng + nước rửa bình</span></li>
-          <li data-id="s4"><span class="check-box"></span><span>Nôi / cũi + nệm cứng phẳng + ga bọc khít + túi ngủ (sleep sack)</span></li>
-          <li data-id="s5"><span class="check-box"></span><span>(Tùy chọn — mua sau nếu cần) Máy hút sữa, máy tiệt trùng, máy hâm sữa</span></li>
-          <li data-id="s6"><span class="check-box"></span><span>Kiểm tra & nộp hồ sơ BHXH thai sản</span></li>
-          <li data-id="s7"><span class="check-box"></span><span>Bàn giao công việc, chốt người trực ca</span></li>
-          <li data-id="s8"><span class="check-box"></span><span>Học bế bé, thay tã, pha sữa, vỗ ợ hơi</span></li>
-          <li data-id="s9"><span class="check-box"></span><span>Quỹ dự phòng sinh nở (tiền mặt + thẻ)</span></li>
-          <li data-id="s10"><span class="check-box"></span><span>Lên kế hoạch mẹ về Bình Thuận ở cữ</span></li>
-          <li data-id="s11"><span class="check-box"></span><span>Giặt - phơi - gấp sẵn đồ sơ sinh</span></li>
-          <li data-id="s12"><span class="check-box"></span><span>Siêu âm 4D + xét nghiệm tuần 30-32</span></li>
+          <li data-id="s1"><span class="check-box"></span><span>Mua quần áo sơ sinh (size NB + 3M)<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="s2"><span class="check-box"></span><span>Tã / bỉm sơ sinh, khăn sữa, khăn xô<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="s3"><span class="check-box"></span><span>Bình sữa 1-2 cái dự phòng + nước rửa bình<span class="tag tag-rec">🟡 Nên có</span></span></li>
+          <li data-id="s4"><span class="check-box"></span><span>Nôi / cũi + nệm cứng phẳng + ga bọc khít + túi ngủ (sleep sack)<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="s5"><span class="check-box"></span><span>Máy hút sữa, máy tiệt trùng, máy hâm sữa<span class="tag tag-opt">⚪ Tùy chọn</span></span></li>
+          <li data-id="s6"><span class="check-box"></span><span>Kiểm tra & nộp hồ sơ BHXH thai sản<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="s7"><span class="check-box"></span><span>Bàn giao công việc, chốt người trực ca<span class="tag tag-rec">🟡 Nên có</span></span></li>
+          <li data-id="s8"><span class="check-box"></span><span>Học bế bé, thay tã, pha sữa, vỗ ợ hơi<span class="tag tag-rec">🟡 Nên có</span></span></li>
+          <li data-id="s9"><span class="check-box"></span><span>Quỹ dự phòng sinh nở (tiền mặt + thẻ)<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="s10"><span class="check-box"></span><span>Lên kế hoạch mẹ về Bình Thuận ở cữ<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="s11"><span class="check-box"></span><span>Giặt - phơi - gấp sẵn đồ sơ sinh<span class="tag tag-rec">🟡 Nên có</span></span></li>
+          <li data-id="s12"><span class="check-box"></span><span>Siêu âm 4D + xét nghiệm tuần 30-32<span class="tag tag-must">🟢 Phải có</span></span></li>
         </ul>
         <div class="check-progress"><div class="check-progress-bar"></div></div>
         <div class="check-count">0/12 hoàn thành</div>
@@ -1117,15 +1143,15 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
         <div class="check-card-stage">Trước sinh — Tuần 36-40</div>
         <h4 class="font-title">Sẵn Sàng Đón Bé</h4>
         <ul class="check-list">
-          <li data-id="b1"><span class="check-box"></span><span>Túi đi sinh để sẵn ở cửa</span></li>
-          <li data-id="b2"><span class="check-box"></span><span>Đếm thai máy mỗi ngày (sáng - tối)</span></li>
-          <li data-id="b3"><span class="check-box"></span><span>Học nhận biết dấu hiệu chuyển dạ</span></li>
-          <li data-id="b4"><span class="check-box"></span><span>Xin phép nghỉ tuần sinh ở cty</span></li>
-          <li data-id="b5"><span class="check-box"></span><span>Photo sẵn CCCD, sổ khám, BHYT</span></li>
-          <li data-id="b6"><span class="check-box"></span><span>Sạc đầy điện thoại + pin dự phòng</span></li>
-          <li data-id="b7"><span class="check-box"></span><span>Đổ đầy xăng / book sẵn taxi dự phòng</span></li>
-          <li data-id="b8"><span class="check-box"></span><span>Khám thai mỗi tuần từ tuần 36</span></li>
-          <li data-id="b9"><span class="check-box"></span><span>Chốt người đưa đi viện khi trở dạ</span></li>
+          <li data-id="b1"><span class="check-box"></span><span>Túi đi sinh để sẵn ở cửa<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="b2"><span class="check-box"></span><span>Đếm thai máy mỗi ngày (sáng - tối)<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="b3"><span class="check-box"></span><span>Học nhận biết dấu hiệu chuyển dạ<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="b4"><span class="check-box"></span><span>Xin phép nghỉ tuần sinh ở cty<span class="tag tag-rec">🟡 Nên có</span></span></li>
+          <li data-id="b5"><span class="check-box"></span><span>Photo sẵn CCCD, sổ khám, BHYT<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="b6"><span class="check-box"></span><span>Sạc đầy điện thoại + pin dự phòng<span class="tag tag-rec">🟡 Nên có</span></span></li>
+          <li data-id="b7"><span class="check-box"></span><span>Đổ đầy xăng / book sẵn taxi dự phòng<span class="tag tag-rec">🟡 Nên có</span></span></li>
+          <li data-id="b8"><span class="check-box"></span><span>Khám thai mỗi tuần từ tuần 36<span class="tag tag-must">🟢 Phải có</span></span></li>
+          <li data-id="b9"><span class="check-box"></span><span>Chốt người đưa đi viện khi trở dạ<span class="tag tag-must">🟢 Phải có</span></span></li>
           <li data-id="b10"><span class="check-box"></span><span>Hít thở thật sâu — sắp tới rồi!</span></li>
         </ul>
         <div class="check-progress"><div class="check-progress-bar"></div></div>
