@@ -836,8 +836,28 @@ footer .heart { color: var(--dino-peach-dark); margin: 0 4px; font-size: 22px;}
   .week-card-1 { left: 10%; } .week-card-3 { right: 10%; }
 }
 @media (max-width: 900px) {
-  nav { padding: 16px 24px; }
-  .nav-links { display: none; }
+  nav { padding: 12px 16px; flex-wrap: wrap; }
+  .nav-links {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    background: var(--white);
+    border: 1px solid rgba(92,75,65,0.12);
+    border-radius: 999px;
+    padding: 7px 13px;
+    font-size: 13.5px;
+    font-weight: 800;
+  }
   .btn-sos { display: flex; }
   .hero { padding: 120px 24px 60px; }
   .hero-visual { height: 400px; }
