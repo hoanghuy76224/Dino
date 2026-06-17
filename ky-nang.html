@@ -43,7 +43,7 @@
   .navcard b{display:block;font-size:15px;margin-bottom:2px}
   .navcard span{font-size:12.5px;color:var(--ink-soft)}
   .navcard.u{border-color:#FFD0D0;background:linear-gradient(180deg,#fff,#fff7f6)}
-  .skill{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 22px;margin:16px 0;box-shadow:var(--shadow);scroll-margin-top:16px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 22px;margin:16px 0;box-shadow:var(--shadow);scroll-margin-top:64px}
   .tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px;margin-bottom:12px;text-transform:uppercase}
   .tag.emer{background:var(--red-bg);color:var(--red-deep)}
   .tag.care{background:var(--green-bg);color:var(--green-deep)}
@@ -72,7 +72,7 @@
   .source .lbl{display:block;margin-bottom:6px;color:var(--ink);font-weight:700}
   .source a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:var(--rose-deep);font-weight:700;background:var(--peach-soft);padding:7px 13px;border-radius:999px;margin:5px 7px 0 0;border:1px solid var(--line);transition:background .15s;font-size:13px}
   .source a:hover{background:var(--peach)}
-  .redflag{background:var(--red-bg);border:2px solid #FFD0D0;border-radius:18px;padding:20px 22px;margin:16px 0}
+  .redflag{background:var(--red-bg);border:2px solid #FFD0D0;border-radius:18px;padding:20px 22px;margin:16px 0;scroll-margin-top:64px}
   .redflag h3{color:var(--red-deep);font-size:20px;margin-bottom:6px}
   .redflag p.sub{color:#8a3030;font-size:14px;margin-bottom:12px}
   .redflag ul{list-style:none}
@@ -87,9 +87,50 @@
   footer{text-align:center;padding:40px 18px;color:var(--ink-soft);font-size:14px}
   footer .heart{color:var(--rose)}
   .totop{display:inline-block;margin-top:10px;color:var(--ink-soft);text-decoration:none;font-size:13px}
+
+  /* Sticky menu bar */
+  .stickybar{position:sticky;top:0;z-index:50;background:rgba(255,251,245,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(180,140,90,.08)}
+  .stickybar .inner{display:flex;gap:8px;overflow-x:auto;padding:10px 14px;max-width:780px;margin:0 auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .stickybar .inner::-webkit-scrollbar{display:none}
+  .stickybar a{flex:0 0 auto;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;white-space:nowrap;transition:background .15s,transform .1s;display:flex;align-items:center;gap:5px}
+  .stickybar a:active{transform:scale(.95)}
+  .stickybar a.em{background:var(--red-bg);border-color:#FFD0D0;color:var(--red-deep)}
+  .stickybar a.em:hover{background:#ffe1e1}
+  .stickybar a:hover{background:var(--peach-soft)}
+  /* FAB lên đầu */
+  .fab{position:fixed;right:16px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;background:var(--rose-deep);color:#fff;border:none;font-size:20px;font-weight:800;box-shadow:0 6px 18px rgba(180,110,90,.4);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s,transform .15s;display:flex;align-items:center;justify-content:center}
+  .fab.show{opacity:1;pointer-events:auto}
+  .fab:active{transform:scale(.9)}
+  @media(max-width:480px){.stickybar a{font-size:13px;padding:7px 12px}}
+
+  /* Accordion (dropdown) */
+  details.acc{padding:0;overflow:hidden}
+  details.acc>summary{list-style:none;cursor:pointer;padding:20px 22px;display:block;position:relative}
+  details.acc>summary::-webkit-details-marker{display:none}
+  details.acc>summary .tag{margin-bottom:8px}
+  details.acc>summary h3{margin-bottom:0;padding-right:34px}
+  details.acc>summary .chev{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:26px;color:var(--rose-deep);transition:transform .25s;font-weight:800;line-height:1}
+  details.acc[open]>summary .chev{transform:translateY(-50%) rotate(180deg)}
+  details.acc>summary:hover{background:var(--peach-soft)}
+  details.acc .acc-body{padding:0 22px 24px}
+  details.acc[open]>summary{background:var(--peach-soft)}
 </style>
 </head>
 <body>
+
+<nav class="stickybar">
+  <div class="inner">
+    <a class="em" href="#dohieu">🚨 Báo động đỏ</a>
+    <a class="em" href="#hoc">😰 Hóc, sặc</a>
+    <a class="em" href="#cpr">❤️‍🩹 CPR</a>
+    <a class="em" href="#cogiat">⚡ Co giật</a>
+    <a href="#ohoi">🍼 Ợ hơi</a>
+    <a href="#tam">🛁 Tắm bé</a>
+    <a href="#ron">🩹 Chăm rốn</a>
+    <a href="#roluoi">👅 Rơ lưỡi</a>
+    <a href="#vangda">💛 Vàng da</a>
+  </div>
+</nav>
 
 <header>
   <span class="eyebrow">🦖 Nhà trẻ Khủng Long con</span>
@@ -204,9 +245,9 @@
   <div class="sec care"><span class="bar"></span><h2>🍼 Chăm sóc hằng ngày</h2></div>
   <p class="sec-sub">Việc nhỏ làm mỗi ngày, cho Dino dễ chịu</p>
 
-  <article class="skill" id="ohoi">
-    <span class="tag care">Chăm bé</span>
-    <h3>🍼 Vỗ ợ hơi cho bé</h3>
+  <details class="skill acc" id="ohoi">
+    <summary><span class="tag care">Chăm bé</span><h3>🍼 Vỗ ợ hơi cho bé</h3><span class="chev">⌄</span></summary>
+    <div class="acc-body">
     <p class="lead">Sau khi bú, bé nuốt cả hơi vào bụng → đầy hơi, nôn trớ, ngủ không yên. Vỗ ợ hơi đẩy khí ra. Bé bú bình càng hay cần.</p>
     <div class="when"><b>Dấu hiệu cần ợ hơi:</b> quấy khóc, cong lưng, co chân lên bụng, nắm chặt tay sau khi bú.</div>
     <ol class="steps care">
@@ -221,11 +262,12 @@
       <a href="https://tudu.com.vn/vn/y-hoc-thuong-thuc/nuoi-con-bang-sua-me/vo-o-hoi-cho-be/" target="_blank" rel="noopener">📄 BV Từ Dũ</a>
       <a href="https://www.vinmec.com/vie/bai-viet/huong-dan-vo-o-hoi-dung-cach-cho-tre-vi" target="_blank" rel="noopener">📄 Vinmec</a>
     </div>
-  </article>
+  </div>
+  </details>
 
-  <article class="skill" id="tam">
-    <span class="tag care">Chăm bé</span>
-    <h3>🛁 Tắm cho bé</h3>
+  <details class="skill acc" id="tam">
+    <summary><span class="tag care">Chăm bé</span><h3>🛁 Tắm cho bé</h3><span class="chev">⌄</span></summary>
+    <div class="acc-body">
     <p class="lead">Trẻ sơ sinh không cần tắm mỗi ngày. Khi rốn chưa rụng (thường vài ngày–2 tuần đầu) chỉ nên lau người bằng khăn mềm, giữ rốn khô.</p>
     <div class="when"><b>Chuẩn bị trước:</b> phòng kín gió, nước ấm (~37°C, thử bằng khuỷu tay), khăn, quần áo, tã, gạc — bày sẵn trong tầm tay. Không bao giờ rời tay khỏi bé khi bé ở gần nước.</div>
     <ol class="steps care">
@@ -239,11 +281,12 @@
       <a href="https://tudu.com.vn/vn/y-hoc-thuong-thuc/suc-khoe-phu-nu/lam-me-an-toan/cham-soc-tre-so-sinh/huong-dan-cach-tam-va-giao-tiep-voi-tre-trong-luc-tam/" target="_blank" rel="noopener">📄 BV Từ Dũ</a>
       <a href="https://www.vinmec.com/vie/bai-viet/huong-dan-cac-buoc-tam-cho-tre-so-sinh-vi" target="_blank" rel="noopener">📄 Vinmec — các bước tắm</a>
     </div>
-  </article>
+  </div>
+  </details>
 
-  <article class="skill" id="ron">
-    <span class="tag care">Chăm bé</span>
-    <h3>🩹 Chăm sóc rốn</h3>
+  <details class="skill acc" id="ron">
+    <summary><span class="tag care">Chăm bé</span><h3>🩹 Chăm sóc rốn</h3><span class="chev">⌄</span></summary>
+    <div class="acc-body">
     <p class="lead">Cuống rốn thường rụng trong 1–2 tuần đầu. Giữ rốn <b>khô và sạch</b> là cách tốt nhất ngừa nhiễm trùng. Vệ sinh ít nhất 1 lần/ngày.</p>
     <ol class="steps care">
       <li><b>Rửa tay sạch trước khi chạm rốn</b><span>Luôn rửa tay bằng xà phòng trước.</span></li>
@@ -256,11 +299,12 @@
       <a href="https://www.vinmec.com/vie/bai-viet/cach-cham-soc-ron-cho-tre-so-sinh-vi" target="_blank" rel="noopener">📄 Vinmec</a>
       <a href="https://tamanhhospital.vn/cham-soc-ron-tre-so-sinh/" target="_blank" rel="noopener">📄 BV Tâm Anh</a>
     </div>
-  </article>
+  </div>
+  </details>
 
-  <article class="skill" id="roluoi">
-    <span class="tag care">Chăm bé</span>
-    <h3>👅 Rơ lưỡi cho bé</h3>
+  <details class="skill acc" id="roluoi">
+    <summary><span class="tag care">Chăm bé</span><h3>👅 Rơ lưỡi cho bé</h3><span class="chev">⌄</span></summary>
+    <div class="acc-body">
     <p class="lead">Sau bú, cặn sữa đọng trên lưỡi bé. Rơ lưỡi giúp sạch miệng, tránh tưa lưỡi (nấm Candida). Làm nhẹ nhàng, ~2 lần/ngày, lúc bụng bé chưa no căng.</p>
     <ol class="steps care">
       <li><b>Rửa tay, chuẩn bị gạc</b><span>Rửa tay sạch. Quấn gạc rơ lưỡi mềm quanh ngón trỏ, nhúng nước muối sinh lý (hoặc nước ấm sạch).</span></li>
@@ -273,14 +317,15 @@
       <a href="https://www.vinmec.com/vie/bai-viet/ve-sinh-mieng-cho-tre-de-tranh-tua-luoi-sua-von-cuc-vi" target="_blank" rel="noopener">📄 Vinmec — vệ sinh miệng</a>
       <a href="https://www.vinmec.com/vie/bai-viet/dung-mat-ong-ve-sinh-mieng-cho-tre-nho-nen-hay-khong-nen-vi" target="_blank" rel="noopener">📄 Vinmec — cảnh báo mật ong</a>
     </div>
-  </article>
+  </div>
+  </details>
 
   <div class="sec warn"><span class="bar"></span><h2>💛 Theo dõi sức khỏe bé</h2></div>
   <p class="sec-sub">Biết sớm để yên tâm, không hoảng khi không cần</p>
 
-  <article class="skill" id="vangda">
-    <span class="tag warn">Theo dõi</span>
-    <h3>💛 Vàng da sơ sinh</h3>
+  <details class="skill acc" id="vangda">
+    <summary><span class="tag warn">Theo dõi</span><h3>💛 Vàng da sơ sinh</h3><span class="chev">⌄</span></summary>
+    <div class="acc-body">
     <p class="lead">Rất phổ biến trong 2 tuần đầu (60% bé đủ tháng, 80% bé non). Đa số là vàng da <b>sinh lý</b> tự hết. Nhưng vàng da <b>bệnh lý</b> nếu chậm xử lý có thể gây tổn thương não vĩnh viễn — nên phải biết phân biệt.</p>
     <div class="when"><b>Cách tự kiểm tra:</b> ở nơi đủ sáng (ánh sáng tự nhiên tốt nhất), ấn nhẹ ngón tay lên trán hoặc mũi bé rồi thả ra — nếu chỗ đó hiện màu vàng là có vàng da. Vàng da lan từ mặt → ngực → bụng → tay chân: lan càng xuống thấp càng nặng.</div>
     <div class="ok"><b>Vàng da sinh lý (thường không đáng lo):</b> xuất hiện sau 2–3 ngày tuổi, nhẹ, chỉ ở mặt và ngực trên, bé vẫn bú tốt, ngủ tốt, lanh lợi, và tự hết trong 1–2 tuần.</div>
@@ -291,7 +336,8 @@
       <a href="https://bvndtp.org.vn/vang-da-o-tre-so-sinh/" target="_blank" rel="noopener">📄 BV Nhi đồng TP.HCM</a>
       <a href="https://www.vinmec.com/vie/bai-viet/vang-da-o-tre-so-sinh-dau-hieu-canh-bao-benh-ly-vi" target="_blank" rel="noopener">📄 Vinmec</a>
     </div>
-  </article>
+  </div>
+  </details>
 
 
   <div class="disclaimer">
@@ -312,5 +358,14 @@
   <br><a class="totop" href="#">↑ Lên đầu trang</a>
 </footer>
 
+<button class="fab" id="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Lên đầu trang">↑</button>
+<script>
+(function(){
+  var fab=document.getElementById('fab');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>400){fab.classList.add('show');}else{fab.classList.remove('show');}
+  },{passive:true});
+})();
+</script>
 </body>
 </html>
