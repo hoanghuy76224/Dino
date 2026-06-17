@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sổ tay chăm Dino — Kỹ năng ba mẹ nên biết 🦖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF5;--peach:#FFE3A0;--peach-soft:#FFF6DD;--rose:#FFB5A7;--rose-deep:#D67A6B;
+    --coral:#F59382;--ink:#5C4B41;--ink-soft:#8E7C71;--green:#5DB88F;--green-deep:#3A9E72;--green-bg:#E3F6EC;
+    --red:#FF6B6B;--red-deep:#C0392B;--red-bg:#FFF0F0;--amber:#C99A1E;--amber-bg:#FFF6DD;--blue:#748DE5;
+    --card:#ffffff;--line:#F0EEEC;--shadow:0 8px 28px rgba(180,140,90,.13);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.brand{font-family:'Baloo 2',cursive}
+  .wrap{max-width:780px;margin:0 auto;padding:0 18px}
+  header{text-align:center;padding:44px 18px 24px;background:linear-gradient(180deg,var(--peach-soft) 0%,var(--cream) 100%)}
+  .eyebrow{display:inline-block;background:var(--card);color:var(--rose-deep);font-size:13px;font-weight:800;padding:6px 16px;border-radius:999px;box-shadow:var(--shadow);margin-bottom:16px}
+  header h1{font-size:clamp(28px,6.5vw,42px);font-weight:800;letter-spacing:-.5px;margin-bottom:12px;line-height:1.1}
+  header h1 em{color:var(--rose-deep);font-style:normal}
+  header p{color:var(--ink-soft);max-width:540px;margin:0 auto;font-size:16px}
+  .sos{margin:22px auto 6px;background:var(--red-bg);border:2px solid #FFD0D0;border-radius:18px;padding:18px 20px;text-align:left}
+  .sos h2{font-size:18px;color:var(--red-deep);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .sos p{font-size:15px;color:#8a3030;margin-bottom:6px}
+  .sos .num{font-family:'Baloo 2';font-size:32px;font-weight:800;color:var(--red);letter-spacing:1px}
+  .sos small{color:#a05656;font-size:13px;display:block;margin-top:2px}
+  .sec{margin:42px 0 4px;display:flex;align-items:center;gap:10px}
+  .sec .bar{height:22px;width:5px;border-radius:3px;background:var(--rose)}
+  .sec.emer .bar{background:var(--red)}
+  .sec.care .bar{background:var(--green)}
+  .sec.warn .bar{background:var(--amber)}
+  .sec h2{font-size:20px;font-weight:800}
+  .sec-sub{color:var(--ink-soft);font-size:15px;margin:2px 0 16px 15px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:8px}
+  .navcard{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;transition:transform .15s,box-shadow .15s}
+  .navcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .navcard .ic{font-size:28px;display:block;margin-bottom:6px}
+  .navcard b{display:block;font-size:15px;margin-bottom:2px}
+  .navcard span{font-size:12.5px;color:var(--ink-soft)}
+  .navcard.u{border-color:#FFD0D0;background:linear-gradient(180deg,#fff,#fff7f6)}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 22px;margin:16px 0;box-shadow:var(--shadow);scroll-margin-top:16px}
+  .tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px;margin-bottom:12px;text-transform:uppercase}
+  .tag.emer{background:var(--red-bg);color:var(--red-deep)}
+  .tag.care{background:var(--green-bg);color:var(--green-deep)}
+  .tag.warn{background:var(--amber-bg);color:var(--amber)}
+  .skill h3{font-size:23px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:10px;line-height:1.2}
+  .skill .lead{color:var(--ink-soft);font-size:15px;margin-bottom:16px}
+  .when{background:var(--peach-soft);border-radius:14px;padding:13px 16px;margin-bottom:16px;font-size:14.5px}
+  .when b{color:var(--rose-deep)}
+  ol.steps{list-style:none;counter-reset:s;margin:0}
+  ol.steps li{counter-increment:s;position:relative;padding:0 0 16px 44px}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:var(--rose);color:#fff;font-family:'Baloo 2';font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px}
+  ol.steps li:not(:last-child)::after{content:"";position:absolute;left:14px;top:30px;bottom:4px;width:2px;background:var(--peach)}
+  ol.steps li b{display:block;margin-bottom:1px;font-size:15.5px}
+  ol.steps li span{font-size:14.5px;color:var(--ink-soft)}
+  ol.steps.emer li::before{background:var(--red)}
+  ol.steps.emer li:not(:last-child)::after{background:#FFD6D6}
+  ol.steps.care li::before{background:var(--green)}
+  ol.steps.care li:not(:last-child)::after{background:#C5EAD6}
+  .note{margin-top:14px;background:var(--amber-bg);border-left:4px solid var(--amber);border-radius:0 12px 12px 0;padding:12px 16px;font-size:14px;color:#8a6516}
+  .note b{color:var(--amber)}
+  .dont{margin-top:12px;background:var(--red-bg);border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:12px 16px;font-size:14px;color:#8a3030}
+  .dont b{color:var(--red-deep)}
+  .ok{margin-top:12px;background:var(--green-bg);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:12px 16px;font-size:14px;color:#2c6e50}
+  .ok b{color:var(--green-deep)}
+  .source{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-soft)}
+  .source .lbl{display:block;margin-bottom:6px;color:var(--ink);font-weight:700}
+  .source a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:var(--rose-deep);font-weight:700;background:var(--peach-soft);padding:7px 13px;border-radius:999px;margin:5px 7px 0 0;border:1px solid var(--line);transition:background .15s;font-size:13px}
+  .source a:hover{background:var(--peach)}
+  .redflag{background:var(--red-bg);border:2px solid #FFD0D0;border-radius:18px;padding:20px 22px;margin:16px 0}
+  .redflag h3{color:var(--red-deep);font-size:20px;margin-bottom:6px}
+  .redflag p.sub{color:#8a3030;font-size:14px;margin-bottom:12px}
+  .redflag ul{list-style:none}
+  .redflag li{position:relative;padding:7px 0 7px 30px;font-size:15px;color:#7a2e2e;border-bottom:1px solid #ffdede}
+  .redflag li:last-child{border-bottom:none}
+  .redflag li::before{content:"🔴";position:absolute;left:0;top:7px;font-size:13px}
+  .disclaimer{margin:34px 0;background:#fff;border:2px dashed #FFD0D0;border-radius:20px;padding:22px}
+  .disclaimer h3{color:var(--red-deep);font-size:17px;margin-bottom:10px}
+  .disclaimer p{font-size:14px;color:var(--ink-soft);margin-bottom:8px}
+  .disclaimer b{color:var(--ink)}
+  .back{display:inline-block;margin:22px 0 0;color:var(--rose-deep);text-decoration:none;font-weight:800;font-size:15px}
+  footer{text-align:center;padding:40px 18px;color:var(--ink-soft);font-size:14px}
+  footer .heart{color:var(--rose)}
+  .totop{display:inline-block;margin-top:10px;color:var(--ink-soft);text-decoration:none;font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow">🦖 Nhà trẻ Khủng Long con</span>
+  <h1>Sổ tay <em>chăm Dino</em></h1>
+  <p>Tất cả kỹ năng ba mẹ cần thuộc trước khi Dino về nhà — sơ cứu, chăm sóc, nhận biết dấu hiệu nguy hiểm. Đọc trước cho quen tay, để lúc cần thì không luống cuống.</p>
+  <div class="sos wrap">
+    <h2>🚨 Khẩn cấp thật thì gọi NGAY</h2>
+    <p>Bé tím tái, ngừng thở, co giật, bất tỉnh — đừng đọc web, gọi liền:</p>
+    <div class="num">115</div>
+    <small>Cấp cứu toàn quốc · miễn phí · gọi được cả khi máy hết tiền</small>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="sec"><span class="bar"></span><h2>Chọn nhanh</h2></div>
+  <p class="sec-sub">Khẩn cấp để trên cùng — lúc cần là thấy ngay</p>
+  <div class="grid">
+    <a class="navcard u" href="#dohieu"><span class="ic">🚨</span><b>Báo động đỏ</b><span>Khi nào đi viện ngay</span></a>
+    <a class="navcard u" href="#hoc"><span class="ic">😰</span><b>Bé hóc, sặc</b><span>Vỗ lưng · ấn ngực</span></a>
+    <a class="navcard u" href="#cpr"><span class="ic">❤️‍🩹</span><b>Hồi sức CPR</b><span>Bé bất tỉnh, ngừng thở</span></a>
+    <a class="navcard u" href="#cogiat"><span class="ic">⚡</span><b>Sốt cao co giật</b><span>Nằm nghiêng, ghi giờ</span></a>
+    <a class="navcard" href="#ohoi"><span class="ic">🍼</span><b>Vỗ ợ hơi</b><span>Sau khi bú</span></a>
+    <a class="navcard" href="#tam"><span class="ic">🛁</span><b>Tắm bé</b><span>Từng bước an toàn</span></a>
+    <a class="navcard" href="#ron"><span class="ic">🩹</span><b>Chăm rốn</b><span>Giữ khô, sạch</span></a>
+    <a class="navcard" href="#roluoi"><span class="ic">👅</span><b>Rơ lưỡi</b><span>Vệ sinh miệng</span></a>
+    <a class="navcard" href="#vangda"><span class="ic">💛</span><b>Vàng da</b><span>Sinh lý vs bệnh lý</span></a>
+  </div>
+
+  <div class="sec emer"><span class="bar"></span><h2>🚑 Sơ cứu khẩn cấp</h2></div>
+  <p class="sec-sub">Mỗi giây đều quý — nhưng làm đúng mới cứu được bé</p>
+
+  <article class="skill" id="hoc">
+    <span class="tag emer">Khẩn cấp</span>
+    <h3>😰 Khi bé bị hóc, sặc</h3>
+    <p class="lead">Dị vật hoặc sữa bịt đường thở. Chỉ vài phút là nguy hiểm tính mạng. Hướng dẫn cho bé <b>dưới 1 tuổi</b>.</p>
+    <div class="when"><b>Khi nào RA TAY:</b> bé không khóc được, không ho ra tiếng, mặt tím tái, hoảng loạn.<br><b>Khi nào KHÔNG can thiệp:</b> bé vẫn ho mạnh, khóc to được → để bé tự ho, chỉ quan sát. Can thiệp lúc này dễ đẩy dị vật sâu hơn.</div>
+    <ol class="steps emer">
+      <li><b>Đặt bé nằm sấp trên cẳng tay</b><span>Mặt úp xuống, đầu thấp hơn ngực. Bàn tay đỡ chắc cằm và hàm. Tì cẳng tay lên đùi cho vững.</span></li>
+      <li><b>Vỗ lưng 5 cái</b><span>Dùng gót bàn tay vỗ dứt khoát 5 cái vào giữa hai bả vai, đủ mạnh để tống dị vật ra.</span></li>
+      <li><b>Lật ngửa, ấn ngực 5 cái</b><span>Nếu chưa ra, lật bé nằm ngửa (đầu vẫn thấp). Đặt 2–3 ngón tay giữa ngực (dưới đường nối hai núm vú), ấn 5 cái, mỗi cái sâu ~4cm.</span></li>
+      <li><b>Lặp lại 5 vỗ lưng + 5 ấn ngực</b><span>Luân phiên cho tới khi: dị vật bật ra · bé khóc/ho/thở lại được · hoặc bé bất tỉnh.</span></li>
+      <li><b>Bé bất tỉnh → chuyển sang CPR</b><span>Gọi 115 ngay (hoặc nhờ người gọi) rồi bắt đầu hồi sức tim phổi.</span></li>
+    </ol>
+    <div class="dont"><b>Tuyệt đối KHÔNG:</b> đừng dùng tay móc họng bé mò tìm dị vật — dễ đẩy vào sâu hơn và làm trầy xước họng. Chỉ lấy ra khi nhìn thấy rõ dị vật ngay miệng.</div>
+    <div class="note"><b>Lưu ý:</b> bé dưới 1 tuổi chỉ dùng <b>vỗ lưng + ấn ngực</b>, KHÔNG ấn bụng kiểu Heimlich như người lớn — ấn bụng có thể làm tổn thương nội tạng bé.</div>
+    <div class="source"><span class="lbl">📚 Nguồn &amp; video (bác sĩ Việt Nam):</span>
+      <a href="https://bvndtp.org.vn/huong-dan-so-cap-cuu-tre-khi-bi-hoc-di-vat/" target="_blank" rel="noopener">▶ BV Nhi đồng TP.HCM</a>
+      <a href="https://www.vinmec.com/vie/bai-viet/huong-dan-so-cuu-tre-bi-hoc-di-vat-duong-tho-vi" target="_blank" rel="noopener">📄 Vinmec</a>
+      <a href="https://benhviennhitrunguong.gov.vn/huong-dan-so-cuu-hoc-di-vat-cho-tre-nhu-nhi.html" target="_blank" rel="noopener">📄 BV Nhi Trung ương</a>
+    </div>
+  </article>
+
+  <article class="skill" id="cpr">
+    <span class="tag emer">Khẩn cấp</span>
+    <h3>❤️‍🩹 Hồi sức tim phổi (CPR)</h3>
+    <p class="lead">Khi bé <b>bất tỉnh và không thở</b> (hoặc chỉ thở ngáp). CPR giữ máu mang oxy lên não tới khi cấp cứu đến. Cho bé dưới 1 tuổi.</p>
+    <div class="when"><b>Xác định trước khi làm:</b> gọi to tên bé, vỗ nhẹ lòng bàn chân. Bé không phản ứng + không thở bình thường → bắt đầu CPR ngay, nhờ người khác gọi 115.</div>
+    <ol class="steps emer">
+      <li><b>Gọi 115 + đặt bé nằm ngửa</b><span>Đặt bé trên mặt phẳng cứng. Nhờ người gọi cấp cứu để mình không gián đoạn.</span></li>
+      <li><b>Thổi ngạt 2 hơi trước</b><span>Với trẻ nhỏ, ngừng thở thường có trước ngừng tim nên bắt đầu bằng thổi ngạt. Ngửa nhẹ đầu – nâng cằm, miệng trùm kín cả mũi và miệng bé, thổi nhẹ 2 hơi, mỗi hơi ~1 giây, vừa đủ thấy ngực nhô lên. Đừng thổi quá mạnh.</span></li>
+      <li><b>Ấn ngực 30 cái</b><span>Giữa ngực, ngay dưới đường nối hai núm vú. Tốc độ 100–120 cái/phút, sâu ~4cm (1/3 độ dày lồng ngực). Để ngực nảy lên hẳn sau mỗi lần ấn.</span></li>
+      <li><b>Lặp chu kỳ 30 ấn : 2 thổi</b><span>Làm liên tục, không dừng, tới khi bé thở lại hoặc nhân viên y tế tới.</span></li>
+      <li><b>Bé thở lại → tư thế hồi phục</b><span>Đặt bé nằm nghiêng an toàn, tiếp tục theo dõi hơi thở tới khi bàn giao y tế.</span></li>
+    </ol>
+    <div class="note"><b>Cập nhật kỹ thuật mới (2025):</b> hướng dẫn mới khuyên ấn ngực bằng <b>gót một bàn tay</b> hoặc <b>hai ngón cái ôm vòng ngực</b> (khi có 2 người) thay vì 2 ngón tay, để kiểm soát độ sâu tốt hơn. Tỉ lệ 30:2 vẫn giữ nguyên với 1 người.</div>
+    <div class="dont"><b>Quan trọng:</b> CPR cần <b>tập tay thật</b> mới làm đúng. Bài này chỉ giúp ghi nhớ. Hai vợ chồng nên đăng ký một lớp sơ cấp cứu thực hành (bệnh viện, Hội Chữ thập đỏ) trước khi Dino về nhà.</div>
+    <div class="source"><span class="lbl">📚 Nguồn &amp; video:</span>
+      <a href="https://www.vinmec.com/vie/bai-viet/huong-dan-so-cuu-tre-so-sinh-bi-nghet-tho-can-ho-hap-nhan-tao-vi" target="_blank" rel="noopener">📄 Vinmec — CPR trẻ sơ sinh</a>
+      <a href="https://yhoccongdong.com/nhi-khoa/hoi-suc-tim-phoi-o-tre-em-cpr/" target="_blank" rel="noopener">▶ Y Học Cộng Đồng (video phụ đề Việt)</a>
+      <a href="https://bvnguyentriphuong.com.vn/tin-tu-cac-co-so-y-te/huong-dan-so-cuu-ban-dau-va-hoi-suc-tim-phoi-cpr" target="_blank" rel="noopener">📄 BV Nguyễn Tri Phương</a>
+    </div>
+  </article>
+
+  <article class="skill" id="cogiat">
+    <span class="tag emer">Khẩn cấp</span>
+    <h3>⚡ Sốt cao co giật</h3>
+    <p class="lead">Thường gặp ở trẻ 3 tháng–5 tuổi khi sốt cao. Đa số lành tính nhưng phải xử trí đúng để bé không bị sặc, và đi khám để loại trừ bệnh nặng (viêm màng não...).</p>
+    <div class="when"><b>Biểu hiện:</b> hai hàm cắn chặt, sùi bọt mép, tay chân co giật, trợn mắt, tím môi. Cha mẹ dễ hoảng — nhưng việc đầu tiên là <b>giữ bình tĩnh</b>.</div>
+    <ol class="steps emer">
+      <li><b>Đặt bé nằm nghiêng một bên</b><span>Nằm nghiêng nơi thoáng, đầu KHÔNG gập xuống. Tư thế này giúp đờm dãi chảy ra ngoài, không trào vào phổi gây tắc thở.</span></li>
+      <li><b>Nới lỏng quần áo, không ủ ấm</b><span>Cởi bớt đồ, không đắp mền. Để bé thoáng.</span></li>
+      <li><b>Ghi lại giờ bắt đầu và kiểu giật</b><span>Bấm giờ cơn co giật kéo dài bao lâu, giật kiểu gì — thông tin này rất cần cho bác sĩ.</span></li>
+      <li><b>Hạ sốt bằng thuốc đặt hậu môn (nếu có)</b><span>Khi sốt ≥38,5°C có thể đặt paracetamol hậu môn theo cân nặng. Đừng cố cho uống thuốc lúc đang co giật → dễ sặc.</span></li>
+      <li><b>Đưa đi cấp cứu</b><span>Sau cơn, đưa bé tới cơ sở y tế gần nhất. Gọi 115 nếu cơn kéo dài trên 5 phút, bé tím tái nhiều, hoặc co giật lặp lại.</span></li>
+    </ol>
+    <div class="dont"><b>Tuyệt đối KHÔNG:</b> nhét bất cứ thứ gì vào miệng bé (thìa, khăn, ngón tay) để "chống cắn lưỡi" — đây là quan niệm sai, gây gãy răng, tổn thương miệng, tắc đường thở. KHÔNG ghì chặt giữ tay chân bé. KHÔNG chườm nước lạnh (làm co mạch, càng giữ nhiệt).</div>
+    <div class="source"><span class="lbl">📚 Nguồn &amp; video:</span>
+      <a href="https://bvndtp.org.vn/cap-cuu-co-giat-o-tre-em/" target="_blank" rel="noopener">📄 BV Nhi đồng TP.HCM</a>
+      <a href="https://www.vinmec.com/vie/bai-viet/huong-dan-xu-ly-khi-tre-bi-sot-cao-co-giat-vi" target="_blank" rel="noopener">▶ Vinmec</a>
+      <a href="https://benhviennhitrunguong.gov.vn/huong-dan-cach-xu-tri-khi-tre-bi-sot.html" target="_blank" rel="noopener">📄 BV Nhi Trung ương — xử trí sốt</a>
+    </div>
+  </article>
+
+  <div class="redflag" id="dohieu">
+    <h3>🚨 Báo động đỏ — đưa bé đi viện NGAY</h3>
+    <p class="sub">Đặc biệt với bé dưới 3 tháng. Thấy bất kỳ dấu hiệu nào dưới đây thì bỏ điện thoại xuống, đi viện hoặc gọi 115 — đừng ngồi tra mạng.</p>
+    <ul>
+      <li>Bé dưới 3 tháng mà <b>sốt</b> (đo hậu môn ≥38°C) — luôn là cấp cứu, đi khám ngay</li>
+      <li><b>Bỏ bú, bú kém hẳn</b>, lừ đừ, ngủ li bì khó đánh thức</li>
+      <li><b>Thở bất thường:</b> thở nhanh, thở rít, rút lõm lồng ngực, ngừng thở từng cơn</li>
+      <li><b>Tím tái</b> môi, đầu ngón tay, hoặc da xám</li>
+      <li><b>Co giật</b>, người cứng đờ hoặc mềm nhũn bất thường</li>
+      <li><b>Nôn ói liên tục</b>, nôn ra dịch xanh/vàng, tiêu chảy nhiều lần, đi ngoài ra máu</li>
+      <li><b>Khóc thét</b> bất thường không dỗ được, kéo dài</li>
+      <li>Dấu hiệu <b>mất nước:</b> tã khô không ướt nhiều giờ, miệng khô, khóc không có nước mắt, thóp trũng, mắt trũng</li>
+      <li>Rốn <b>chảy mủ, hôi, sưng đỏ</b> quanh rốn</li>
+      <li>Vàng da <b>lan xuống tay chân</b> hoặc kèm lừ đừ, bỏ bú</li>
+    </ul>
+  </div>
+
+  <div class="sec care"><span class="bar"></span><h2>🍼 Chăm sóc hằng ngày</h2></div>
+  <p class="sec-sub">Việc nhỏ làm mỗi ngày, cho Dino dễ chịu</p>
+
+  <article class="skill" id="ohoi">
+    <span class="tag care">Chăm bé</span>
+    <h3>🍼 Vỗ ợ hơi cho bé</h3>
+    <p class="lead">Sau khi bú, bé nuốt cả hơi vào bụng → đầy hơi, nôn trớ, ngủ không yên. Vỗ ợ hơi đẩy khí ra. Bé bú bình càng hay cần.</p>
+    <div class="when"><b>Dấu hiệu cần ợ hơi:</b> quấy khóc, cong lưng, co chân lên bụng, nắm chặt tay sau khi bú.</div>
+    <ol class="steps care">
+      <li><b>Bế vác vai (phổ biến nhất)</b><span>Bế bé thẳng, đầu tựa vai mình. Một tay đỡ mông và lưng, đỡ chắc đầu cổ. Giữ bụng và lưng bé thẳng, không cong.</span></li>
+      <li><b>Khum bàn tay, vỗ nhẹ lưng</b><span>Tay khum lại (không vỗ bằng lòng bàn tay phẳng), vỗ nhẹ giữa hai bả vai. Hoặc vuốt dọc sống lưng từ dưới lên.</span></li>
+      <li><b>Vỗ vài phút là đủ</b><span>Nghe tiếng "ợ" là được. Lót sẵn khăn sữa ở vai vì bé có thể trớ ra ít sữa — bình thường, đừng lo.</span></li>
+      <li><b>Giữ tư thế cao thêm 15–20 phút</b><span>Sau khi ợ, đừng đặt bé nằm xuống ngay để tránh trớ.</span></li>
+    </ol>
+    <div class="note"><b>Tư thế khác:</b> cho bé ngồi trên đùi, một tay đỡ cằm và ngực (đỡ cằm chứ không bóp cổ), tay kia vỗ lưng. Thử vài kiểu xem bé hợp kiểu nào.</div>
+    <div class="dont"><b>Khi nào đi khám:</b> nếu sau ợ hơi bé vẫn khóc liên tục (hơn 3 giờ/ngày) kèm tiêu chảy, đi ngoài ra máu, nôn trớ nhiều khi bú. Đừng tự ý cho bé uống thuốc.</div>
+    <div class="source"><span class="lbl">📚 Nguồn:</span>
+      <a href="https://tudu.com.vn/vn/y-hoc-thuong-thuc/nuoi-con-bang-sua-me/vo-o-hoi-cho-be/" target="_blank" rel="noopener">📄 BV Từ Dũ</a>
+      <a href="https://www.vinmec.com/vie/bai-viet/huong-dan-vo-o-hoi-dung-cach-cho-tre-vi" target="_blank" rel="noopener">📄 Vinmec</a>
+    </div>
+  </article>
+
+  <article class="skill" id="tam">
+    <span class="tag care">Chăm bé</span>
+    <h3>🛁 Tắm cho bé</h3>
+    <p class="lead">Trẻ sơ sinh không cần tắm mỗi ngày. Khi rốn chưa rụng (thường vài ngày–2 tuần đầu) chỉ nên lau người bằng khăn mềm, giữ rốn khô.</p>
+    <div class="when"><b>Chuẩn bị trước:</b> phòng kín gió, nước ấm (~37°C, thử bằng khuỷu tay), khăn, quần áo, tã, gạc — bày sẵn trong tầm tay. Không bao giờ rời tay khỏi bé khi bé ở gần nước.</div>
+    <ol class="steps care">
+      <li><b>Lau mặt &amp; mắt trước (khi chưa cởi đồ)</b><span>Dùng gạc mềm thấm nước ấm hoặc nước muối sinh lý, lau mắt từ khóe trong ra ngoài, mỗi bên một miếng gạc riêng. Lau mặt, vành tai.</span></li>
+      <li><b>Gội đầu</b><span>Bế bé kẹp nách, ngửa đầu nhẹ, làm ướt và gội nhẹ, lau khô ngay để bé không lạnh.</span></li>
+      <li><b>Tắm thân</b><span>Cởi đồ, đỡ chắc cổ gáy. Rửa từ cổ → ngực, bụng, tay, lưng → chân, chú ý kỹ các nếp gấp (cổ, nách, bẹn, khoeo). Vùng kín rửa từ trước ra sau.</span></li>
+      <li><b>Lau khô, ủ ấm ngay</b><span>Nhấc bé ra, quấn khăn, thấm khô kỹ các nếp gấp. Mặc đồ, ủ ấm. Cả buổi tắm chỉ nên gọn trong vài phút.</span></li>
+    </ol>
+    <div class="note"><b>Khi rốn chưa rụng:</b> nhiều bác sĩ khuyên chỉ lau người từng phần bằng khăn ấm, tránh để rốn ngâm nước. Việc tắm không làm rốn lâu rụng, nhưng phải giữ vùng rốn khô sạch.</div>
+    <div class="source"><span class="lbl">📚 Nguồn &amp; video:</span>
+      <a href="https://tudu.com.vn/vn/y-hoc-thuong-thuc/suc-khoe-phu-nu/lam-me-an-toan/cham-soc-tre-so-sinh/huong-dan-cach-tam-va-giao-tiep-voi-tre-trong-luc-tam/" target="_blank" rel="noopener">📄 BV Từ Dũ</a>
+      <a href="https://www.vinmec.com/vie/bai-viet/huong-dan-cac-buoc-tam-cho-tre-so-sinh-vi" target="_blank" rel="noopener">📄 Vinmec — các bước tắm</a>
+    </div>
+  </article>
+
+  <article class="skill" id="ron">
+    <span class="tag care">Chăm bé</span>
+    <h3>🩹 Chăm sóc rốn</h3>
+    <p class="lead">Cuống rốn thường rụng trong 1–2 tuần đầu. Giữ rốn <b>khô và sạch</b> là cách tốt nhất ngừa nhiễm trùng. Vệ sinh ít nhất 1 lần/ngày.</p>
+    <ol class="steps care">
+      <li><b>Rửa tay sạch trước khi chạm rốn</b><span>Luôn rửa tay bằng xà phòng trước.</span></li>
+      <li><b>Lau nhẹ chân rốn</b><span>Dùng gạc/tăm bông sạch, lau nhẹ quanh chân cuống rốn. Có thể dùng cồn 70 độ hoặc nước muối sinh lý theo hướng dẫn nữ hộ sinh.</span></li>
+      <li><b>Để rốn thoáng, khô tự nhiên</b><span>Không băng kín rốn. Gấp mép tã xuống dưới rốn để nước tiểu không dính vào và để rốn được thoáng.</span></li>
+      <li><b>Để cuống rốn tự rụng</b><span>Không giật, không kéo dù cuống đã gần rời. Cứ để nó tự rụng.</span></li>
+    </ol>
+    <div class="dont"><b>Đi khám ngay nếu rốn có dấu hiệu nhiễm trùng:</b> sốt, rốn chảy mủ/dịch có mùi hôi, chảy máu, vùng da quanh rốn sưng đỏ, bé bỏ bú quấy khóc. Nhiễm trùng rốn ở trẻ sơ sinh rất nguy hiểm.</div>
+    <div class="source"><span class="lbl">📚 Nguồn:</span>
+      <a href="https://www.vinmec.com/vie/bai-viet/cach-cham-soc-ron-cho-tre-so-sinh-vi" target="_blank" rel="noopener">📄 Vinmec</a>
+      <a href="https://tamanhhospital.vn/cham-soc-ron-tre-so-sinh/" target="_blank" rel="noopener">📄 BV Tâm Anh</a>
+    </div>
+  </article>
+
+  <article class="skill" id="roluoi">
+    <span class="tag care">Chăm bé</span>
+    <h3>👅 Rơ lưỡi cho bé</h3>
+    <p class="lead">Sau bú, cặn sữa đọng trên lưỡi bé. Rơ lưỡi giúp sạch miệng, tránh tưa lưỡi (nấm Candida). Làm nhẹ nhàng, ~2 lần/ngày, lúc bụng bé chưa no căng.</p>
+    <ol class="steps care">
+      <li><b>Rửa tay, chuẩn bị gạc</b><span>Rửa tay sạch. Quấn gạc rơ lưỡi mềm quanh ngón trỏ, nhúng nước muối sinh lý (hoặc nước ấm sạch).</span></li>
+      <li><b>Lau nhẹ theo vòng tròn</b><span>Đặt bé nằm cố định hoặc bế. Lau nhẹ mặt lưỡi, nướu, trong má theo chuyển động tròn nhẹ. Đừng đưa ngón tay quá sâu kẻo bé ọe.</span></li>
+      <li><b>Tráng miệng sau bú</b><span>Có thể cho bé 1–2 thìa nước ấm sau cữ bú để tráng cặn sữa.</span></li>
+    </ol>
+    <div class="dont"><b>TUYỆT ĐỐI KHÔNG dùng mật ong</b> để rơ lưỡi/vệ sinh miệng cho bé <b>dưới 1 tuổi</b> — mật ong có thể chứa bào tử gây ngộ độc botulinum, cực nguy hiểm cho trẻ nhỏ. Cũng không cạy các mảng trắng → gây chảy máu, nhiễm trùng.</div>
+    <div class="note"><b>Phân biệt:</b> cặn sữa thì mỏng, dễ trôi khi bé nuốt nước bọt. Còn tưa lưỡi (nấm) là mảng trắng bám chặt, lau không hết, ăn sâu — trường hợp này cần đi khám, bác sĩ thường kê nystatin để rơ, không tự ý dùng thuốc.</div>
+    <div class="source"><span class="lbl">📚 Nguồn:</span>
+      <a href="https://www.vinmec.com/vie/bai-viet/ve-sinh-mieng-cho-tre-de-tranh-tua-luoi-sua-von-cuc-vi" target="_blank" rel="noopener">📄 Vinmec — vệ sinh miệng</a>
+      <a href="https://www.vinmec.com/vie/bai-viet/dung-mat-ong-ve-sinh-mieng-cho-tre-nho-nen-hay-khong-nen-vi" target="_blank" rel="noopener">📄 Vinmec — cảnh báo mật ong</a>
+    </div>
+  </article>
+
+  <div class="sec warn"><span class="bar"></span><h2>💛 Theo dõi sức khỏe bé</h2></div>
+  <p class="sec-sub">Biết sớm để yên tâm, không hoảng khi không cần</p>
+
+  <article class="skill" id="vangda">
+    <span class="tag warn">Theo dõi</span>
+    <h3>💛 Vàng da sơ sinh</h3>
+    <p class="lead">Rất phổ biến trong 2 tuần đầu (60% bé đủ tháng, 80% bé non). Đa số là vàng da <b>sinh lý</b> tự hết. Nhưng vàng da <b>bệnh lý</b> nếu chậm xử lý có thể gây tổn thương não vĩnh viễn — nên phải biết phân biệt.</p>
+    <div class="when"><b>Cách tự kiểm tra:</b> ở nơi đủ sáng (ánh sáng tự nhiên tốt nhất), ấn nhẹ ngón tay lên trán hoặc mũi bé rồi thả ra — nếu chỗ đó hiện màu vàng là có vàng da. Vàng da lan từ mặt → ngực → bụng → tay chân: lan càng xuống thấp càng nặng.</div>
+    <div class="ok"><b>Vàng da sinh lý (thường không đáng lo):</b> xuất hiện sau 2–3 ngày tuổi, nhẹ, chỉ ở mặt và ngực trên, bé vẫn bú tốt, ngủ tốt, lanh lợi, và tự hết trong 1–2 tuần.</div>
+    <div class="dont"><b>Vàng da bệnh lý — đi khám NGAY nếu:</b> vàng da xuất hiện sớm trong 24–48 giờ đầu · vàng đậm lan xuống tới bụng, tay, chân, lòng bàn tay/chân · mắt vàng · màu chuyển từ vàng chanh sang vàng cam/sậm · kéo dài quá 1 tuần (bé đủ tháng) · kèm bỏ bú, lừ đừ, sốt, co giật.</div>
+    <div class="note"><b>Đừng tự chữa:</b> tắm nắng hay thuốc dân gian KHÔNG chữa được vàng da bệnh lý. Điều trị chuẩn là chiếu đèn tại bệnh viện. Trước khi xuất viện nên cho bé kiểm tra bilirubin.</div>
+    <div class="source"><span class="lbl">📚 Nguồn:</span>
+      <a href="https://nhidong.org.vn/cau-lac-bo-ba-me/vang-da-o-tre-so-sinh-nhung-dieu-can-biet-c55-3056.aspx" target="_blank" rel="noopener">📄 BV Nhi Đồng 1</a>
+      <a href="https://bvndtp.org.vn/vang-da-o-tre-so-sinh/" target="_blank" rel="noopener">📄 BV Nhi đồng TP.HCM</a>
+      <a href="https://www.vinmec.com/vie/bai-viet/vang-da-o-tre-so-sinh-dau-hieu-canh-bao-benh-ly-vi" target="_blank" rel="noopener">📄 Vinmec</a>
+    </div>
+  </article>
+
+
+  <div class="disclaimer">
+    <h3>⚠️ Đọc kỹ giúp ba mẹ</h3>
+    <p><b>Cẩm nang này để học trước, không thay bác sĩ.</b> Mục đích là giúp ba mẹ quen tay, nhớ các bước cơ bản trước khi Dino về nhà.</p>
+    <p>Mọi nội dung tổng hợp từ các bệnh viện và bác sĩ Việt Nam (Từ Dũ, Vinmec, Nhi Đồng 1, Nhi đồng TP.HCM, Nhi Trung ương…). Bấm link nguồn ở mỗi mục để xem bài và video đầy đủ tại trang gốc.</p>
+    <p><b>Về liều thuốc và con số cụ thể: luôn hỏi bác sĩ/dược sĩ, đừng lấy từ web hay AI.</b></p>
+    <p><b>Lúc khẩn cấp thật: bỏ điện thoại xuống, gọi 115 ngay.</b> Sơ cứu và CPR là kỹ năng cần thực hành — nếu được, hai vợ chồng nên đăng ký một lớp sơ cấp cứu trẻ em thực tế.</p>
+  </div>
+
+  <a class="back" href="https://dino.khunglongcon.com/">← Về trang Dino</a>
+
+</div>
+
+<footer>
+  Nhà trẻ Khủng Long con 🦖<br>
+  Thiết kế bằng tình yêu của ba <span class="heart">❤️</span> · Đợi bé Dino · 01.09.2026
+  <br><a class="totop" href="#">↑ Lên đầu trang</a>
+</footer>
+
+</body>
+</html>
